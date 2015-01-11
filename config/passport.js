@@ -11,7 +11,7 @@ module.exports = function() {
 	passport.deserializeUser(function(id, done) {
 		User.findOne(
 			{_id: id},
-			'-password -salt',
+			'-password',
 			function(err, user) {
 				done(err, user);
 			}
@@ -19,4 +19,5 @@ module.exports = function() {
 	});
 
 	require('./strategies/local.js')();
+	require('./strategies/facebook.js')();
 };
