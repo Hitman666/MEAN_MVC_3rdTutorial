@@ -1,5 +1,7 @@
+var port = 1337;
+
 module.exports = {
-	port: '1337',
+	port: port,
 	db: 'mongodb://localhost/todos',
 	facebook: {
 		clientID: '513828288756645',
