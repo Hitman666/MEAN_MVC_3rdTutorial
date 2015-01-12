@@ -4,31 +4,30 @@
 	<title>
 		<%=title %>
 	</title>
+
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 </head>
 <body>
 	<% for(var i in messages) { %>
 	<div class="flash"><%= messages[i] %></div>
 	<% } %>
-	<form action="/register" method="post">
-		<div>
-			<label>Name:</label>
-			<input type="text" name="firstName" />
-		</div>
-		<div>
-			<label>Email:</label>
-			<input type="text" name="email" />
-		</div>
-		<div>
-			<label>Username:</label>
-			<input type="text" name="username" />
-		</div>
-		<div>
-			<label>Password:</label>
-			<input type="password" name="password" />
-		</div>
-		<div>
-			<input type="submit" value="Register" />
-		</div>
-	</form>
+
+	<div class="container">
+		<form class="form-signin" action="/register" method="post">
+        	<h2 class="form-signin-heading text-center">Register</h2>
+        
+	        <label for="name" class="sr-only">Username</label>
+	        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+
+	        <label for="email" class="sr-only">E-mail</label>
+	        <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+	        
+	        <label for="password" class="sr-only">Password</label>
+	        <input type="password" id="password" class="form-control" placeholder="Password" required>
+	        
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      	</form>
+    </div>
 </body>
 </html>

@@ -5,17 +5,21 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
 	name: String,
 	email: String,
-	username: String,
+	username: {
+		type: String,
+		trim: true,
+		unique: true
+	},
 	password: String,
 	provider: String,
 	providerId: String,
-	providerData: {}
+	providerData: {},
+	todos: {}
 });
 
 UserSchema.pre('save', 
 	function(next) {
 		if (this.password) {
-			//this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 			var md5 = crypto.createHash('md5');
 			this.password = md5.update(this.password).digest('hex');
 		}
@@ -23,10 +27,6 @@ UserSchema.pre('save',
 		next();
 	}
 );
-
-// UserSchema.methods.hashPassword = function(password) {
-// 	return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
-// };
 
 UserSchema.methods.authenticate = function(password) {
 	var md5 = crypto.createHash('md5');
@@ -57,9 +57,9 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 	);
 };
 
-UserSchema.set('toJSON', {
-	getters: true,
-	virtuals: true
-});
+// UserSchema.set('toJSON', {
+// 	getters: true,
+// 	virtuals: true
+// });
 
 mongoose.model('User', UserSchema);

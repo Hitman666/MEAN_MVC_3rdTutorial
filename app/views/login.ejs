@@ -4,6 +4,9 @@
 	<title>
 		<%=title %>
 	</title>
+
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 </head>
 <body>
 	<% for(var i in messages) { %>
@@ -12,29 +15,26 @@
 		</div>
 	<% } %>
 
-	<form action="/login" method="post">
-		<div>
-			<label>Username:</label>
-			<input type="text" name="username" />
-		</div>
-	
-		<div>
-			<label>Password:</label>
-			<input type="password" name="password" />
-		</div>
-	
-		<div>
-			<input type="submit" value="Login" />
-		</div>
-	</form>
+	<div class="container">
+		<form class="form-signin" action="/login" method="post">
+        	<h2 class="form-signin-heading text-center">Open, says me</h2>
+        
+	        <label for="inputUsername" class="sr-only">Username</label>
+	        <input type="email" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+	        
+	        <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+	        
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      	</form>
 
-	<a href="/oauth/facebook">Login with Facebook</a>
-
-	<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
+      	<div class="row">
+		    <div class="center-block text-center">
+				<a href="/oauth/facebook">Login with Facebook</a> |
+				<a href="/oauth/twitter">Login with Twitter</a>
+			</div>
+		</div>
+    </div>
 </div>
 </body>
 </html>
