@@ -16,7 +16,7 @@ module.exports = function() {
 			providerData.token = token;
 			providerData.tokenSecret = tokenSecret;
 			var providerUserProfile = {
-				fullName: profile.displayName,
+				name: profile.displayName,
 				username: profile.username,
 				provider: 'twitter',
 				providerId: profile.id,

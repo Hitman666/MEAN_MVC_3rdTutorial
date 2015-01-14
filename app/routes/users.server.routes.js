@@ -34,11 +34,11 @@ module.exports = function(app) {
 	}));
 
 	app.get('/oauth/twitter', passport.authenticate('twitter', {
-		failureRedirect: '/signin'
+		failureRedirect: '/login'
 	}));
 
 	app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
-		failureRedirect: '/signin',
+		failureRedirect: '/login',
 		successRedirect: '/'
 	}));
 };

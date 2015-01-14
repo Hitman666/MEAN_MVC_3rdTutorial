@@ -14,7 +14,7 @@ var UserSchema = new Schema({
 	provider: String,
 	providerId: String,
 	providerData: {},
-	todos: {}
+	todos: {}//we will use this in the next tutorial to store TODOs
 });
 
 UserSchema.pre('save', 
@@ -56,10 +56,5 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 		}
 	);
 };
-
-// UserSchema.set('toJSON', {
-// 	getters: true,
-// 	virtuals: true
-// });
 
 mongoose.model('User', UserSchema);
